@@ -39,7 +39,10 @@ const Home = () => {
     datafetch(query)
    }
    const searching=()=>{
-    datafetch(search)
+    const trimmedSearch = search.trim();
+    if (trimmedSearch) {
+      datafetch(trimmedSearch);
+    }
    }
     useEffect(() => {
      datafetch()
