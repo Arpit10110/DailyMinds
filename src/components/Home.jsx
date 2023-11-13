@@ -21,8 +21,9 @@ const Home = () => {
            }
            const currentDate = new Date().toISOString().split('T')[0];
            console.log(currentDate)
+        //    apikey = '9cff69e6e05a8bedd2f0403cca256737';
             setIsLoading(true);
-            const data= await fetch(`https://newsapi.org/v2/everything?q=${selectedRegion}&from=2023-10-13&sortBy=publishedAt&apiKey=500cafdb64b24b88b972543da1db1c87`);
+            const data= await fetch(`https://gnews.io/api/v4/search?q=`+selectedRegion+`&max=10&apikey=9cff69e6e05a8bedd2f0403cca256737`);
             const Datas = await data.json();
             setnewdata(Datas.articles);
             console.log(Datas);
@@ -96,7 +97,7 @@ const Home = () => {
     {
         newsdata.map((i,index)=>{
             return(
-                <Card id={index} title={i.title} img={i.urlToImage} des={i.description} readm={i.url} />
+                <Card id={index} title={i.title} img={i.image} des={i.description} readm={i.url} />
             )
         })
     }
